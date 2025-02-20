@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            /*background: linear-gradient(to right, #ff9a9e, #fad0c4);*/
+            background: url('birthday.jpg') no-repeat center center/cover;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            animation: bounce 2s infinite;
+            max-width: 80%;
+        }
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #539bcc;
+        }
+        .balloons-container {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .balloons {
+            width: 400px;
+            animation: floatBalloons 5s infinite ease-in-out;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes floatBalloons {
+            0% { transform: translateY(100%); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100%); opacity: 0; }
+        }
+        .replay {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background: #001735;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .balloons {
+                width: 60px;
+            }
+            .message {
+                font-size: 20px;
+            }
+            .card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="balloons-container">
+        <img src="8846114.png" class="balloons">
+        <img src="8846114.png" class="balloons">
+    </div>
+    <div class="card">
+        <h1 class="message">🎉 Happy Birthday! 🎂</h1>
+        <p>🎈🎁 Wishing you all the happiness and success in the world! 🎈🎁</p>
+        <p>🥂May this year be the best chapter of your life so far, full of new opportunities and amazing memories! 🍰🎉🥳</p>
+    </div>
+    
+    <button class="replay" onclick="replayAnimation()">click Here</button>
+    <audio id="birthdayTune" autoplay loop>
+        <source src="birthday-song.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function replayAnimation() {
+            document.querySelectorAll('.balloons').forEach(balloon => {
+                balloon.style.animation = 'none';
+                setTimeout(() => {
+                    balloon.style.animation = 'floatBalloons 5s infinite ease-in-out';
+                }, 10);
+            });
+            document.getElementById('birthdayTune').play();
+        }
+    </script>
+</body>
+</html>
